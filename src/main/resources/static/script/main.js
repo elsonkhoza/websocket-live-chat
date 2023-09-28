@@ -37,29 +37,20 @@ joinBtn.addEventListener("click", (event) => {
 
 });
 
-
-
 function onConnected() {
-    // Subscribe to the Public Topic
     stompClient.subscribe('/topic/public', onMessageReceived);
-
-    // Tell your username to the server
     stompClient.send("/app/chat.add",
         {},
         JSON.stringify({sender: username, type: 'JOIN'})
     )
 }
 
-
 function onError(error) {
-    connectingElement.textContent = 'Could not connect to WebSocket server. Please refresh this page to try again!';
-    connectingElement.style.color = 'red';
-    console.log("error");
+    alert("Failed to connect")
 }
 
 sendBtn.addEventListener("click",(event)=>{
   var message=msgInput.value;
-    
   if(message && stompClient) {
 
     console.log(message);
@@ -74,14 +65,26 @@ sendBtn.addEventListener("click",(event)=>{
 
 })
 
+disconnectBtn.addEventListener("click",(event)=>{
+  if(stompClient) {
+      var chatMessage = {
+          sender: username,
+          message: "",
+          type: 'DISCONNECT'
+      };
+      stompClient.send("/app/chat.send", {}, JSON.stringify(chatMessage));
+      
+      chatArea.classList.add("hide");
+      joinArea.classList.remove("hide");
+  }
+  event.preventDefault();
+
+})
+
 
 function onMessageReceived(payload) {
     var chatMessage = JSON.parse(payload.body);
-
-    console.log(message);
-
     var message=null;
-
     var messageElement = document.createElement('div');
 
     if(chatMessage.type === 'JOIN') {
