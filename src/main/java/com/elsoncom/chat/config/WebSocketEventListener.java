@@ -16,7 +16,7 @@ public class WebSocketEventListener {
      * Get Notified when a user leaves the chat
      */
     @EventListener
-    public void handleWebSocketDisconnectListener(SessionDisconnectEvent event){
+    public void handleWebSocketDisconnectListener(SessionDisconnectEvent event) {
 
 
     }
