@@ -1,0 +1,48 @@
+
+
+.messages {
+    min-height: 400px;
+    border: 1px solid black;
+    border-radius: 8px;
+}
+
+.msg-header{
+    padding: 8px;
+    border-bottom:1px solid black;
+    width: 100%;
+    text-align: right;
+
+}
+
+.chat-send{
+    background-color: brown;
+    padding: 8px;
+    color: white;
+    border-radius: 8px;
+    
+    margin-left: 40px;
+    margin-top: 8px;
+}
+
+.chat-receive{
+    margin-top: 8px;
+    margin-left: 8px;
+}
+
+.notify{
+    
+    text-align: center;
+    margin-top: 8px;
+}
+
+.msg-header-username{
+    margin-left: auto;
+}
+
+.hide{
+    display: none;
+}
+
+.show {
+    display: block;
+}
